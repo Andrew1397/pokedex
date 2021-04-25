@@ -1,8 +1,4 @@
-import * as axios from 'axios';
 import React from 'react';
-import { connect } from 'react-redux';
-import { pokemonsAPI } from '../../api/api';
-import { setPokemons } from '../../redux/pokemons-reducer'
 import Preloader from '../Preloader';
 import App from '../../App.module.css';
 import Characteristics from '../Charahteristics/Characteristics';
@@ -16,10 +12,12 @@ class Content extends React.Component {
         this.props.setPokemons()
     }
 
-
-
+    
     render() {
-        
+        const UpFirst = (string) => {
+            return string.charAt(0).toUpperCase() + string.slice(1)
+          }
+      
 
         if (!this.props.pokemons) {
             return <Preloader />
@@ -40,7 +38,7 @@ class Content extends React.Component {
                                                 <div className={App.pokemon}>
                                                     <div className={App.pokemonIitem}>
                                                         <img className={App.pokemonsmalimg} src={`https://pokeres.bastionbot.org/images/pokemon/${p.pokData.id}.png`} alt="pokemon" />
-                                                        <div className={App.namePokemons}>{p.name}</div>
+                                                        <div className={App.namePokemons}>{UpFirst(p.name)}</div>
                                                         <span className={App.typesPokemon}>
                                                         {
                                                             p.pokData.types.map(t => {

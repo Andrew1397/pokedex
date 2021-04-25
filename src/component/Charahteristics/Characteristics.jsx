@@ -6,6 +6,9 @@ const Characteristics = ({pokemon}) => {
   let nameCh = (name) => {
     return pokemon.pokData.stats.filter((s)=>s.stat.name===name)[0].base_stat
 }
+  const UpFirst = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}
     return (
         <span>
             
@@ -13,7 +16,7 @@ const Characteristics = ({pokemon}) => {
           <div className={App.pokemonCharacteristics}>
             <div className={App.pokemonCharacteristicsItems}>
               <img className={App.pokemonImgCharacteristic} src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.pokData.id}.png`} alt="" />
-              <div className={App.namePokemonsandID}>{pokemon.name}</div>
+              <div className={App.namePokemonsandID}>{UpFirst(pokemon.name)}</div>
               <table border={1} width="100%">
                 <tbody><tr>
                     <td>Type</td>
